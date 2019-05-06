@@ -41,6 +41,6 @@ int main(){
   for (int i = 0; i < 10;){
     cout << ++i << " "; //will add to i, then output it
   }
-  //DO: 4.34, 4.35, 4.40
+  //DO: 4.34, 4.35
   return 0;
 }
