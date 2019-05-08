@@ -1,5 +1,8 @@
 /*
-
+Program that can:
+1. Compute factorial
+2. Estimate e with factorial
+3. Estimate e^x with factorial
 */
 #include <iostream>
 //Use <climits> INT_MAX/UNIT_MAX/Mins to get systems maxes/mins
@@ -14,6 +17,7 @@ using namespace std;
 int factorial(int);
 double e_estimate(int, int);
 
+//compute factorial of x
 int factorial(int x){
   if(x == 0 || x == 1){
     return 1;
@@ -27,7 +31,7 @@ int factorial(int x){
     return factorial;
   }
 }
-
+//estimate e^numerator
 double e_estimate(int num_terms, int numerator=1){
   double e_est = 0;
   num_terms--;

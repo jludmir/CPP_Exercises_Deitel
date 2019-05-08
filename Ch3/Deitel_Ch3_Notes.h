@@ -11,7 +11,7 @@ public:
    //Interesting Note on constructors: If constructor defined, no default constructor
   explicit ElectricBill(int num): num1{num} {}
 
-  //ONLY use explicit w/>1 arg
+  //ONLY use explicit w/>1 arg constructor
   ElectricBill(int num_1, int num_2): num1{num_1},num2{num_2} {}
   //Getters/Setters
 

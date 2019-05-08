@@ -5,7 +5,8 @@ using namespace std;
 
 int main(){
   /* WHY USE test{} instead of test() for object instantiation?
-    - Using brackets = List initialization = More efficient
+    - Using brackets = List initialization = More efficient (remember in cpp "list" is just a pointer to 1st element in list)
+    - List initialization avoids narrowing conversion (see ch4 notes)
   */
   ElectricBill test{1};
   cout << test.get_num1() << " " << test.get_num2() << endl;
