@@ -17,7 +17,6 @@ public:
   //Add amount to cents
   void add(DollarAmount value_2){
     cents += value_2.cents;
-    int i = 1;
   }
 
   //Subtract amount from cents
