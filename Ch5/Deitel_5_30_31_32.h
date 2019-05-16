@@ -1,5 +1,7 @@
 #include <cmath>
 
+//Class for DollarAmount using only integers to avoid floating point issues
+
 class DollarAmount{
 public:
   //Constructors:
@@ -15,6 +17,7 @@ public:
   //Add amount to cents
   void add(DollarAmount value_2){
     cents += value_2.cents;
+    int i = 1;
   }
 
   //Subtract amount from cents
