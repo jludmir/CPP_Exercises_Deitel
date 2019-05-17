@@ -39,12 +39,12 @@ int main(){
   cout << capital->toString() << endl;
 
   string option;
-  cout << "\nEnter \"add\", enter \"subtract\", enter \"interest\", enter \"divide\", or ctrl+d to exit: " << endl;
+  cout << "\nEnter \"a\" for add, enter \"s\" for subtract, enter \"i\" for interest, enter \"d\" for divide, or ctrl+d to exit: " << endl;
 
   //start REPL
   while(getline(cin,option)){
     //Add dollar amount to capital
-    if(option.compare("add")==0){
+    if(option.compare("a")==0){
       cout << "Enter dollar value to add: ";
       cin >> dollars;
       cin.ignore();
@@ -54,7 +54,7 @@ int main(){
     }
 
     //Subtract dollar amount to capital
-    else if(option.compare("subtract")==0){
+    else if(option.compare("s")==0){
       cout << "Enter dollar value to subtract: ";
       cin >> dollars;
       cin.ignore();
@@ -62,9 +62,12 @@ int main(){
       capital->subtract(val2);
       cout << "New value: " << capital->toString() << endl;
     }
-
     //Show yearly compounding interest, save final value in capital
-    else if(option.compare("interest")==0){
+
+    else if(option.compare("i")==0){
+      cout << "Choose type of rounding:\n0=Half-Up\n1=Banker's" << endl;
+      int opt;
+      cin >> opt;
       int64_t years, rate, divisor;
       cout << "Enter integer interest rate, year, and divisor\nEX:\nFor 2% on 5 years enter: 5 2 100\nFor 2.3% on 10 years enter: 10 23 1000\nEnter year/rate/divisor (space separated): ";
       cin >> years >> rate >> divisor;
@@ -72,14 +75,21 @@ int main(){
       cout << "Initial balance: " << capital->toString() << endl;
       cout << "\nYear" << setw(20) << "Amount on deposit" << endl;
 
-      for(int year{0}; year < years; year++){
-        capital->addInterest_HalfUp(rate,divisor);
-
-        cout << setw(4) << year+1 << setw(20) << capital->toString() << endl;
+      if (opt == 0){
+        for(int year{0}; year < years; year++){
+          capital->addInterest_HalfUp(rate,divisor);
+          cout << setw(4) << year+1 << setw(20) << capital->toString() << endl;
+        }
+      }
+      else if (opt == 1){
+        for(int year{0}; year < years; year++){
+          capital->addInterest_Bankers(rate,divisor);
+          cout << setw(4) << year+1 << setw(20) << capital->toString() << endl;
+        }
       }
     }
 
-    else if(option.compare("divide")==0){
+    else if(option.compare("d")==0){
       cout << "Enter value as divisor: ";
       int divisor;
       cin >> divisor;
@@ -87,8 +97,8 @@ int main(){
       capital->divide(divisor);
       cout << "New value: " << capital->toString() << endl;
     }
-    
-  cout << "\nEnter \"add\", enter \"subtract\", enter \"interest\", enter \"divide\", or ctrl+d to exit: " << endl;
+
+  cout << "\nEnter \"a\" for add, enter \"s\" for subtract, enter \"i\" for interest, enter \"d\" for divide, or ctrl+d to exit: " << endl;
   }
   delete capital;
   return 0;
